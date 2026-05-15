@@ -1,6 +1,6 @@
 # 📘 Student Score Prediction
 
-Machine Learning project that predicts student exam scores based on study hours using Linear Regression.
+Machine Learning project that predicts student exam scores based on study hours and previous scores using Linear Regression.
 
 ---
 
@@ -39,7 +39,6 @@ student-score-prediction/
 
 ## 📊 Features
 
-- Data visualization
 - Linear Regression model
 - Model evaluation
 - Interactive Streamlit UI
