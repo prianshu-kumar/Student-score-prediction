@@ -2,10 +2,32 @@ import streamlit as st
 import pickle
 import numpy as np
 from pathlib import Path
+import logging
 
-# Load model using an absolute path
+# Attempt to locate the model file from several likely locations
 BASE_DIR = Path(__file__).resolve().parent
-MODEL_PATH = BASE_DIR.parent / "model" / "model.pkl"
+candidate_paths = [
+    BASE_DIR / "model" / "model.pkl",
+    BASE_DIR.parent / "model" / "model.pkl",
+    Path.cwd() / "model" / "model.pkl",
+]
+
+MODEL_PATH = None
+for p in candidate_paths:
+    if p.exists():
+        MODEL_PATH = p
+        break
+
+if MODEL_PATH is None:
+    logging.error("Model file not found. Checked paths:\n%s", "\n".join(str(p) for p in candidate_paths))
+    st.error(
+        "Model file not found. Ensure `model/model.pkl` is included in the deployed app."
+    )
+    st.write("Checked paths:")
+    for p in candidate_paths:
+        st.write(f"- {p}")
+    st.stop()
+
 with MODEL_PATH.open("rb") as f:
     model = pickle.load(f)
 
