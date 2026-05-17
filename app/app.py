@@ -1,9 +1,13 @@
 import streamlit as st
 import pickle
 import numpy as np
+from pathlib import Path
 
-# Load model
-model = pickle.load(open("./model/model.pkl", "rb"))
+# Load model using an absolute path
+BASE_DIR = Path(__file__).resolve().parent
+MODEL_PATH = BASE_DIR.parent / "model" / "model.pkl"
+with MODEL_PATH.open("rb") as f:
+    model = pickle.load(f)
 
 # Page config
 st.set_page_config(
