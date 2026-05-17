@@ -1,6 +1,8 @@
-# 📘 Student Score Prediction
+# 📚 Student Score Prediction using Machine Learning
 
-Machine Learning project that predicts student exam scores based on study hours and previous scores using Linear Regression.
+[![Streamlit App](https://img.shields.io/badge/Streamlit-Live_App-red?logo=streamlit)](https://student-score-prediction-prianshu.streamlit.app/)
+
+A Machine Learning project that predicts student scores based on study-related factors using regression techniques.
 
 ---
 
